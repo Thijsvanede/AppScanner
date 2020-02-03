@@ -1,7 +1,7 @@
-from reader import Reader
-from burst import Burst
-from flow import Flow
-from features import Features
+from .reader import Reader
+from .burst import Burst
+from .flow import Flow
+from .features import Features
 
 import numpy as np
 import pickle
