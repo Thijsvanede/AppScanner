@@ -1,7 +1,18 @@
 # AppScanner
 This code was implemented as part of the NDSS FlowPrint [1] paper, it implements the Single Large Random Forest Classifier of AppScanner [2]. We ask people to cite both works when using the software for academic research papers.
 
-## Dependencies
+## Installation
+
+### Using pip
+The easiest way to install `appscanner` is using pip
+```
+pip install appscanner
+```
+
+### Manually
+If you would like to install appscanner manually, please make sure you have installed the required dependencies.
+
+#### Dependencies
 This code is written in Python3 and depends on the following libraries:
  * Numpy
  * Pandas
@@ -10,7 +21,7 @@ This code is written in Python3 and depends on the following libraries:
 
 To install these use the following command
 ```
-pip3 install -U scapy numpy pandas scikit-learn
+pip install -U scapy numpy pandas scikit-learn
 ```
 
 ## Usage
@@ -18,15 +29,15 @@ The AppScanner implementation can be tested with the `main.py` script. This scri
 
 ### API
 It is also possible to directly use the AppScanner code as an API. There are two main classes which need to be understood.
- * `preprocessor.py` for extracting features from `.pcap` files.
- * `appscanner.py` for applying the AppScanner detection.
+ * `appscanner.preprocessor.Preprocessor` for extracting features from `.pcap` files.
+ * `appscanner.appscanner.AppScanner` for applying the AppScanner detection.
 
 #### Preprocessor
 The `Preprocessor` object is used to extract data from `.pcap` files and label them. To this end, it uses the `process` function which requires a list of files and a list of labels. The list of files must be pathnames to pcap files. The list of labels must be labels corresponding to each file. The example below shows how the `Preprocessor` can be used.
 
 ##### Example
 ```python
-from preprocessor import Preprocessor
+from appscanner.preprocessor import Preprocessor
 
 # Create object
 preprocessor = Preprocessor()
@@ -36,14 +47,14 @@ X, y = preprocessor.process(['<path_file_1>', ..., '<path_file_n>'],
 ```
 
 #### AppScanner
-The `AppScanner` object is used to find known applications in network traffic. It can be `fit` with `X_train` and `y_train` arrays obtained by the `Preprocessor`. After it has been `fit`, the `AppScanner` is able to `predict` unknown samples `X_test`. The example below shows how `AppScanner` can be used.
+The `AppScanner` object is used to find known applications in network traffic. AppScanner requires a confidence `threshold` (default=0.9). The threshold means AppScanner only returns labels for which it is confident enough or `-1` otherwise, a threshold of 0 gives labels for every predicted sample. It can be `fit` with `X_train` and `y_train` arrays obtained by the `Preprocessor`. After it has been `fit`, the `AppScanner` is able to `predict` unknown samples `X_test`. The example below shows how `AppScanner` can be used.
 
 ##### Example
 ```python
-from appscanner import AppScanner
+from appscanner.appscanner import AppScanner
 
 # Create object
-scanner = AppScanner()
+scanner = AppScanner(threshold=0.9)
 
 # Fit scanner
 scanner.fit(X_train, y_train)
