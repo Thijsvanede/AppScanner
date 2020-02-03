@@ -1,9 +1,10 @@
 import argparse
 import os
+import sys
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-from preprocessor import Preprocessor
-from appscanner import AppScanner
+from .preprocessor import Preprocessor
+from .appscanner import AppScanner
 
 def extract_labels(files):
     """Extract the labels as the directory in which the files reside."""
@@ -39,6 +40,11 @@ if __name__ == "__main__":
 
     # Parse given arguments
     args = parser.parse_args()
+
+    # Print help if no arguments were given
+    if len(sys.argv)==1:
+        parser.print_help(sys.stderr)
+        sys.exit(1)
 
     # Create preprocessor object
     preprocessor = Preprocessor(verbose=True)
