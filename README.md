@@ -1,5 +1,5 @@
 # AppScanner
-This code implements the Single Large Random Forest Classifier of AppScanner [1].
+This code was implemented as part of the NDSS FlowPrint [1] paper, it implements the Single Large Random Forest Classifier of AppScanner [2]. We ask people to cite both works when using the software for academic research papers.
 
 ## Dependencies
 This code is written in Python3 and depends on the following libraries:
@@ -52,4 +52,28 @@ y_pred = scanner.predict(X_test)
 ```
 
 ## References
-[1] `Taylor, V. F., Spolaor, R., Conti, M., & Martinovic, I. (2016, March). Appscanner: Automatic fingerprinting of smartphone apps from encrypted network traffic. In 2016 IEEE European Symposium on Security and Privacy (EuroS&P) (pp. 439-454). IEEE.`
+[1] `van Ede, T., Bortolameotti, R., Continella, A., Ren, J., Dubois, D. J., Lindorfer, M., Choffnes, D., van Steen, M. & Peter, A. (2020, February). FlowPrint: Semi-Supervised Mobile-App Fingerprinting on Encrypted Network Traffic. In 2020 NDSS. (to appear). The Internet Society.`
+
+[2] `Taylor, V. F., Spolaor, R., Conti, M., & Martinovic, I. (2016, March). Appscanner: Automatic fingerprinting of smartphone apps from encrypted network traffic. In 2016 IEEE European Symposium on Security and Privacy (EuroS&P) (pp. 439-454). IEEE.`
+
+### Bibtex
+```
+@inproceedings{vanede2020flowprint,
+  title={{FlowPrint: Semi-Supervised Mobile-App Fingerprinting on Encrypted Network Traffic}},
+  author={van Ede, Thijs and Bortolameotti, Riccardo and Continella, Andrea and Ren, Jingjing and Dubois, Daniel J. and Lindorfer, Martina and Choffness, David and van Steen, Maarten, and Peter, Andreas}
+  booktitle={NDSS},
+  year={2020},
+  organization={The Internet Society}
+}
+```
+
+```
+@inproceedings{taylor2016appscanner,
+  title={Appscanner: Automatic fingerprinting of smartphone apps from encrypted network traffic},
+  author={Taylor, Vincent F and Spolaor, Riccardo and Conti, Mauro and Martinovic, Ivan},
+  booktitle={2016 IEEE European Symposium on Security and Privacy (EuroS\&P)},
+  pages={439--454},
+  year={2016},
+  organization={IEEE}
+}
+```
