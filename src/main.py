@@ -26,11 +26,13 @@ if __name__ == "__main__":
                                        'file.')
     parser.add_argument('--load', help='load preprocessed data from given '
                                        'file.')
-    parser.add_argument('--test', type=float, help='Portion of data to be used '
-                                                   'for testing. All other '
-                                                   'data is used for training. '
+    parser.add_argument('--test', type=float, default=0.33, help='Portion of '
+                                                   'data to be used for '
+                                                   'testing. All other data is '
+                                                   'used for training. '
                                                    '(default=0.33)')
-    parser.add_argument('--threshold', type=float, help='Certainty threshold '
+    parser.add_argument('--threshold', type=float, default=0.9, help=
+                                                   'Certainty threshold '
                                                    'used in AppScanner '
                                                    '(default=0.9)')
 
@@ -59,11 +61,11 @@ if __name__ == "__main__":
 
     # Split X and y in training and testing data
     X_train, X_test, y_train, y_test = train_test_split(X, y,
-                                           test_size=args.test or 0.33,
+                                           test_size=args.test,
                                            random_state=42)
 
     # Create appscanner object
-    appscanner = AppScanner(args.threshold or 0.9)
+    appscanner = AppScanner(args.threshold)
     # Fit AppScanner
     appscanner.fit(X_train, y_train)
     # Predict AppScanner
