@@ -6,6 +6,7 @@ from preprocessor import Preprocessor
 from appscanner import AppScanner
 
 def extract_labels(files):
+    """Extract the labels as the directory in which the files reside."""
     # Initialise result
     result = list()
     # Loop over all files
