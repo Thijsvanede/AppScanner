@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="appscanner",
-    version="1.0.1",
+    version="1.0.2",
     author="Thijs van Ede",
     author_email="t.s.vanede@utwente.nl",
     description="AppScanner: Automatic Fingerprinting of Smartphone Apps from "
