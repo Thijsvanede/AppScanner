@@ -63,7 +63,7 @@ class Reader(object):
                 Scapy IP packet extracted by sniff function.
             """
         # Extract relevant content from packet
-        data = [packet.time,
+        data = [float(packet.time),
                 int(ipaddress.ip_address(packet["IP"].src)),
                 int(ipaddress.ip_address(packet["IP"].dst)),
                 packet["TCP"].sport,
